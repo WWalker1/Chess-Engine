@@ -1,0 +1,6 @@
+1. FEN (Forsyth-Edwards Notation): A standard notation for describing chess positions.
+2. Chess board representation: How chess positions are stored and manipulated in computer memory.
+3. Move generation: The process of generating all legal moves in a given position.
+4. Search algorithms: Methods for exploring possible moves and evaluating positions (e.g., Minimax, Alpha-Beta pruning).
+5. Position evaluation: Techniques for assigning a numerical value to a chess position.
+6. Chess engine architecture: The overall structure of a chess engine, including search, evaluation, and move selection components.
