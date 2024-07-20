@@ -1,5 +1,6 @@
 import chess
 import random
+from gui import *
 
 class ChessEngine:
     def __init__(self, use_ai=True):
@@ -77,14 +78,34 @@ class ChessEngine:
         return self.board.fen()
 
 def play_game(ai_engine, random_engine):
-    while not ai_engine.board.is_game_over():
-        if ai_engine.board.turn == chess.WHITE:
-            move = ai_engine.search_best_move(depth=3)
-        else:
-            move = random_engine.get_random_move()
+    clock = pygame.time.Clock()
+    board = fen_to_board(ai_engine.board.fen())
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
         
-        ai_engine.make_move(move)
-        random_engine.make_move(move)
+        while not ai_engine.board.is_game_over():
+            if ai_engine.board.turn == chess.WHITE:
+                move = ai_engine.search_best_move(depth=3)
+                ai_engine.make_move(move)
+            else:
+                move = ai_engine.get_random_move()
+                ai_engine.make_move(move)
+
+            board = fen_to_board(ai_engine.board.fen())
+
+            screen.fill(WHITE)
+            draw_board(screen)
+            draw_pieces(screen, board)
+            pygame.display.flip()
+            clock.tick(FPS)
+
+        input()
+        running = False
+        pygame.quit()
     
     result = ai_engine.board.result()
     if result == "1-0":
