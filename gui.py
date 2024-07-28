@@ -6,7 +6,7 @@ from chess_bot import *
 pygame.init()
 
 # Constants
-WIDTH, HEIGHT = 800, 800
+WIDTH, HEIGHT = 600, 600
 SQ_SIZE = HEIGHT // 8
 FPS = 30
 
